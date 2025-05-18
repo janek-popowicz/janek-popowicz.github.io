@@ -1,4 +1,4 @@
-import { mapData, setMapData, fetchMapData, recentIcon} from './script.js';
+import { mapData, setMapData, fetchMapData} from './script.js';
 
 export async function uploadMap() {
     const input = document.createElement("input");
