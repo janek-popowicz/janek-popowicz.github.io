@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transit Map Visualization</title>
+    <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+    <canvas id="map"></canvas>
+    <div class="menu">
+        <button id="upload-map">Upload map ⬆️</button>
+        <button id="download-map">Download map ⬇️</button>
+        <button id="add-station">Add Station 🚉</button>
+        <button id="add-segment">Add Connection</button>
+        <button id="add-river">Add River 🏞️</button>
+    </div>
+    <div class="line-menu">
+        <h3>Lines</h3>
+        <ul id="line-list">
+            <!-- Lista linii zostanie wygenerowana dynamicznie -->
+        </ul>
+        <button id="add-new-line">Add New Line</button>
+    </div>
+    <script type="module" src="./static/script.js"></script>
+</body>
+</html>
