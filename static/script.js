@@ -4,6 +4,7 @@ import { getMapCoordinatesFromClick } from './clickHandlers.js';
 import { showEditMenu } from './editMenu.js';
 import { generateLineList } from './lineMenu.js';
 import { uploadMap, downloadMap, loadInitialMapData} from './importexport.js';
+import { exportToFormat } from './export.js';
 
 export let mapData = null; // Eksportuj mapData
 
@@ -605,83 +606,101 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
+// Dodaj na początku w sekcji importów:
+// import { exportToFormat } from './export.js';
 
-// export let isPlacingIcon = false;
-// export let tempIcon = null;
-// export function setPlacingIcon(value) {
-//     isPlacingIcon = value;
-// }
-// export function setTempIcon(icon) {
-//     tempIcon = { ...icon }; // Skopiuj wszystkie właściwości ikony
-// }
-// document.getElementById("add-icon").addEventListener("click", () => {
-//     isPlacingIcon = true;
-//     tempIcon = {
-//         id: `N${Date.now()}`, // Tymczasowe ID
-//         label: "New Icon",
-//         coordinates: [0, 0],
-//         size: 10,
-//         icon: recentIcon
-//     };
-//     canvas.style.cursor = "crosshair"; // Zmień kursor na krzyżyk
-// });
+// Dodaj na początku pliku lub w sekcji inicjalizacji
+window.addEventListener('beforeunload', (e) => {
+    e.preventDefault();
+    e.returnValue = '';
+    return 'Be sure you saved the map.';
+});
 
-// canvas.addEventListener("mousemove", (e) => {
-//     if (!isPlacingIcon || !tempIcon) return;
+// Dodaj zmienne dla eksportu PNG (przed lub po innych zmiennych globalnych)
+let isSelectingExportArea = false;
+let exportAreaStart = null;
+let exportAreaEnd = null;
+let exportAreaRect = null;
 
-//     const [mapX, mapY] = getMapCoordinatesFromClick(e, canvas, offsetX, offsetY, scale);
+// Dodaj obsługę przycisku eksportu
+document.getElementById("export-png").addEventListener("click", () => {
+    isSelectingExportArea = true;
+    canvas.style.cursor = "crosshair";
+});
 
-//     // Przyciąganie do całkowitych punktów
-//     tempIcon.coordinates = [Math.round(mapX), Math.round(mapY)];
+// Dodaj obsługę kliknięć podczas eksportu
+canvas.addEventListener('click', (e) => {
+    if (!isSelectingExportArea) return;
 
-//     // Odśwież mapę i narysuj tymczasowy węzeł
-//     fetchMapData();
-//     ctx.save();
-//     ctx.translate(
-//         tempIcon.coordinates[0] * 50 * scale + canvas.width / 2 + offsetX,
-//         -(tempIcon.coordinates[1] * 50 * scale - canvas.height / 2 - offsetY)
-//     );
-//     ctx.beginPath();
-//     ctx.arc(0, 0, tempIcon.size / 5 * scale, 0, Math.PI * 2);
-//     ctx.fillStyle = "black";
-//     ctx.fill();
-//     ctx.strokeStyle = "white";
-//     ctx.lineWidth = 2;
-//     ctx.stroke();
-//     ctx.restore();
-// });
+    const [rawX, rawY] = getMapCoordinatesFromClick(e, canvas, offsetX, offsetY, scale);
+    const mapX = Math.round(rawX);
+    const mapY = Math.round(rawY);
+    
+    if (!exportAreaStart) {
+        exportAreaStart = [mapX, mapY];
+    } else {
+        exportAreaEnd = [mapX, mapY];
+        canvas.style.cursor = 'default';
+        exportAreaRect = [
+            Math.min(exportAreaStart[0], exportAreaEnd[0]),
+            Math.min(exportAreaStart[1], exportAreaEnd[1]),
+            Math.max(exportAreaStart[0], exportAreaEnd[0]),
+            Math.max(exportAreaStart[1], exportAreaEnd[1])
+        ];
 
-// canvas.addEventListener("click", (e) => {
-//     if (!isPlacingIcon || !tempIcon) return;
+        exportToFormat(mapData, 'png', exportAreaRect);
 
-//     const [mapX, mapY] = getMapCoordinatesFromClick(e, canvas, offsetX, offsetY, scale);
+        isSelectingExportArea = false;
+        exportAreaStart = null;
+        exportAreaEnd = null;
+        exportAreaRect = null;
+        canvas.style.cursor = 'default';
+        fetchMapData();
+    }
+});
 
-//     // Przyciąganie do całkowitych punktów
-//     tempIcon.coordinates = [Math.round(mapX), Math.round(mapY)];
+// Dodaj obsługę ruchu myszki podczas eksportu
+canvas.addEventListener("mousemove", (e) => {
+    if (!isSelectingExportArea) return;
+    
+    const [mapX, mapY] = getMapCoordinatesFromClick(e, canvas, offsetX, offsetY, scale);
+    const snappedX = Math.round(mapX);
+    const snappedY = Math.round(mapY);
+    
+    fetchMapData();
+    
+    if (exportAreaStart) {
+        ctx.save();
+        ctx.strokeStyle = '#ff0000';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([5, 5]);
+        
+        const startScreenX = exportAreaStart[0] * 50 * scale + canvas.width / 2 + offsetX;
+        const startScreenY = -(exportAreaStart[1] * 50 * scale - canvas.height / 2 - offsetY);
+        const currentScreenX = snappedX * 50 * scale + canvas.width / 2 + offsetX;
+        const currentScreenY = -(snappedY * 50 * scale - canvas.height / 2 - offsetY);
+        
+        ctx.beginPath();
+        ctx.rect(
+            Math.min(startScreenX, currentScreenX),
+            Math.min(startScreenY, currentScreenY),
+            Math.abs(currentScreenX - startScreenX),
+            Math.abs(currentScreenY - startScreenY)
+        );
+        ctx.stroke();
+        ctx.restore();
+    }
+});
 
-//     if (mapData.icons.some(icon => icon.id === tempIcon.id)) {
-//         // Aktualizuj istniejącą ikonę
-//         const iconIndex = mapData.icons.findIndex(icon => icon.id === tempIcon.id);
-//         mapData.icons[iconIndex] = { ...tempIcon };
-//     } else {
-//         // Dodaj nową ikonę
-//         mapData.icons.push({ ...tempIcon });
-//     }
-
-//     // Wyłącz tryb umieszczania
-//     isPlacingIcon = false;
-//     tempIcon = null;
-//     canvas.style.cursor = "default";
-
-//     // Odśwież mapę
-//     fetchMapData();
-// });
-
-// document.addEventListener("keydown", (e) => {
-//     if (e.key === "Escape" && isPlacingIcon) {
-//         isPlacingIcon = false;
-//         tempIcon = null;
-//         canvas.style.cursor = "default";
-//         fetchMapData(); // Odśwież mapę, aby usunąć tymczasową ikonę
-//     }
-// });
+// Dodaj obsługę klawisza Escape dla eksportu
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isSelectingExportArea) {
+        console.log("Anulowano wybór obszaru eksportu");
+        isSelectingExportArea = false;
+        exportAreaStart = null;
+        exportAreaEnd = null;
+        exportAreaRect = null;
+        canvas.style.cursor = 'default';
+        fetchMapData();
+    }
+});

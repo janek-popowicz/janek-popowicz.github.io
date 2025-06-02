@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transit Map Visualization</title>
-    <link rel="stylesheet" href="./static/style.css">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <canvas id="map"></canvas>
     <div class="menu">
         <button id="upload-map">Upload map ⬆️</button>
         <button id="download-map">Download map ⬇️</button>
+        <button id="export-png">Export PNG 🖼️</button>
         <button id="add-station">Add Station 🚉</button>
         <button id="add-segment">Add Connection</button>
         <button id="add-river">Add River 🏞️</button>
+        <button id="add-icon">Add Icon 🖼️</button>
     </div>
     <div class="line-menu">
         <h3>Lines</h3>
@@ -22,6 +24,6 @@
         </ul>
         <button id="add-new-line">Add New Line</button>
     </div>
-    <script type="module" src="./static/script.js"></script>
+    <script type="module" src="/static/script.js"></script>
 </body>
 </html>
