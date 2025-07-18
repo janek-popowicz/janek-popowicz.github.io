@@ -1,175 +1,31 @@
 {
   "nodes": [
     {
-      "id": "N1747574949593",
-      "label": " Świętokrzyska",
-      "label_position": [
-        20,
-        12
-      ],
-      "label_text_degree": 45,
-      "coordinates": [
-        -3,
-        1
-      ],
-      "type": "standard_white",
-      "type_rotation": 90,
-      "size": 20
-    },
-    {
-      "id": "N1747575106345",
-      "label": "Nowy Świat Uniwersytet",
+      "id": "N1752831980416",
+      "label": "Hello! Welcome to Transit Mapper.",
       "label_position": [
         10,
-        10
-      ],
-      "label_text_degree": 45,
-      "coordinates": [
-        -1,
-        1
-      ],
-      "type": "standard_black",
-      "type_rotation": 90,
-      "size": 20
-    },
-    {
-      "id": "N1747575354425",
-      "label": "Rondo ONZ",
-      "label_position": [
-        10,
-        10
-      ],
-      "label_text_degree": 45,
-      "coordinates": [
-        -5,
-        1
-      ],
-      "type": "standard_black",
-      "type_rotation": 90,
-      "size": 20
-    },
-    {
-      "id": "N1747575468682",
-      "label": "Rondo Daszyńskiego",
-      "label_position": [
-        10,
-        10
-      ],
-      "label_text_degree": 45,
-      "coordinates": [
-        -7,
-        1
-      ],
-      "type": "standard_black",
-      "type_rotation": 90,
-      "size": 20
-    },
-    {
-      "id": "N1747575521682",
-      "label": "Centrum Nauki Kopernik",
-      "label_position": [
-        10,
-        10
-      ],
-      "label_text_degree": 45,
-      "coordinates": [
-        1,
-        1
-      ],
-      "type": "standard_black",
-      "type_rotation": 90,
-      "size": 20
-    },
-    {
-      "id": "N1747575541264",
-      "label": "Płocka",
-      "label_position": [
-        10,
-        10
-      ],
-      "label_text_degree": 45,
-      "coordinates": [
-        -9,
-        1
-      ],
-      "type": "standard_black",
-      "type_rotation": 90,
-      "size": 20
-    },
-    {
-      "id": "N1747575593233",
-      "label": "New Station",
-      "label_position": [
-        10,
-        10
+        -7
       ],
       "label_text_degree": 90,
       "coordinates": [
-        -3,
-        5
+        2,
+        3
       ],
-      "type": "invisible",
+      "type": "standard_black",
       "type_rotation": 90,
       "size": 20
     },
     {
-      "id": "N1747575625105",
-      "label": "New Station",
+      "id": "N1752832025990",
+      "label": "Here's gonna be link to a youtube tutorial when I'll have motivation to make it:",
       "label_position": [
         10,
-        10
+        -7
       ],
       "label_text_degree": 90,
       "coordinates": [
-        -3,
-        -1
-      ],
-      "type": "invisible",
-      "type_rotation": 90,
-      "size": 20
-    },
-    {
-      "id": "N1747575649225",
-      "label": "Stadion Narodowy",
-      "label_position": [
-        10,
-        10
-      ],
-      "label_text_degree": 45,
-      "coordinates": [
-        3,
-        1
-      ],
-      "type": "standard_black",
-      "type_rotation": 90,
-      "size": 20
-    },
-    {
-      "id": "N1747575675505",
-      "label": "Młynów",
-      "label_position": [
-        10,
-        10
-      ],
-      "label_text_degree": 45,
-      "coordinates": [
-        -11,
-        1
-      ],
-      "type": "standard_black",
-      "type_rotation": 90,
-      "size": 20
-    },
-    {
-      "id": "N1747575963601",
-      "label": "Dworzec Wileński",
-      "label_position": [
-        10,
-        10
-      ],
-      "label_text_degree": 45,
-      "coordinates": [
-        5,
+        2,
         1
       ],
       "type": "standard_black",
@@ -179,249 +35,26 @@
   ],
   "segments": [
     {
-      "id": "S1747575136185",
-      "start_node": "N1747574949593",
-      "end_node": "N1747575106345",
+      "id": "S1752832072865",
+      "start_node": "N1752832025990",
+      "end_node": "N1752831980416",
       "route": [
-        [
-          -3,
-          1
-        ],
-        [
-          -2,
-          1
-        ],
-        [
-          -1,
-          1
-        ]
-      ],
-      "lines": [
-        "L142309497"
-      ]
-    },
-    {
-      "id": "S1747575377776",
-      "start_node": "N1747574949593",
-      "end_node": "N1747575354425",
-      "route": [
-        [
-          -3,
-          1
-        ],
-        [
-          -4,
-          1
-        ],
-        [
-          -5,
-          1
-        ]
-      ],
-      "lines": [
-        "L142309497"
-      ]
-    },
-    {
-      "id": "S1747575501633",
-      "start_node": "N1747575354425",
-      "end_node": "N1747575468682",
-      "route": [
-        [
-          -5,
-          1
-        ],
-        [
-          -6,
-          1
-        ],
-        [
-          -7,
-          1
-        ]
-      ],
-      "lines": [
-        "L142309497"
-      ]
-    },
-    {
-      "id": "S1747575533305",
-      "start_node": "N1747575106345",
-      "end_node": "N1747575521682",
-      "route": [
-        [
-          -1,
-          1
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          1,
-          1
-        ]
-      ],
-      "lines": [
-        "L142309497"
-      ]
-    },
-    {
-      "id": "S1747575539841",
-      "start_node": "N1747575541264",
-      "end_node": "N1747575541264",
-      "route": [
-        [
-          -9,
-          1
-        ],
-        [
-          -9,
-          1
-        ]
-      ],
-      "lines": [
-        "L142309497"
-      ]
-    },
-    {
-      "id": "S1747575570425",
-      "start_node": "N1747575468682",
-      "end_node": "N1747575541264",
-      "route": [
-        [
-          -7,
-          1
-        ],
-        [
-          -8,
-          1
-        ],
-        [
-          -9,
-          1
-        ]
-      ],
-      "lines": [
-        "L142309497"
-      ]
-    },
-    {
-      "id": "S1747575610537",
-      "start_node": "N1747574949593",
-      "end_node": "N1747575593233",
-      "route": [
-        [
-          -3,
-          1
-        ],
-        [
-          -3,
-          2
-        ],
-        [
-          -3,
-          3
-        ],
-        [
-          -3,
-          4
-        ],
-        [
-          -3,
-          5
-        ]
-      ],
-      "lines": [
-        "L142295185"
-      ]
-    },
-    {
-      "id": "S1747575636017",
-      "start_node": "N1747574949593",
-      "end_node": "N1747575625105",
-      "route": [
-        [
-          -3,
-          1
-        ],
-        [
-          -3,
-          0
-        ],
-        [
-          -3,
-          -1
-        ]
-      ],
-      "lines": [
-        "L142295185"
-      ]
-    },
-    {
-      "id": "S1747575668041",
-      "start_node": "N1747575521682",
-      "end_node": "N1747575649225",
-      "route": [
-        [
-          1,
-          1
-        ],
         [
           2,
           1
         ],
         [
-          3,
-          1
+          1,
+          2
+        ],
+        [
+          2,
+          3
         ]
       ],
       "lines": [
-        "L142309497"
-      ]
-    },
-    {
-      "id": "S1747575697921",
-      "start_node": "N1747575541264",
-      "end_node": "N1747575675505",
-      "route": [
-        [
-          -9,
-          1
-        ],
-        [
-          -10,
-          1
-        ],
-        [
-          -11,
-          1
-        ]
-      ],
-      "lines": [
-        "L142309497"
-      ]
-    },
-    {
-      "id": "S1747575976745",
-      "start_node": "N1747575649225",
-      "end_node": "N1747575963601",
-      "route": [
-        [
-          3,
-          1
-        ],
-        [
-          4,
-          1
-        ],
-        [
-          5,
-          1
-        ]
-      ],
-      "lines": [
-        "L142309497"
+        "L142309497",
+        "L142295185"
       ]
     }
   ],
@@ -431,64 +64,10 @@
       "label": "M1",
       "color": "#0008ff",
       "thickness": 20
-    },
-    {
-      "id": "L142309497",
-      "label": "M2",
-      "color": "#ff0000",
-      "thickness": 20
     }
   ],
-  "rivers": [
-    {
-      "id": "R1747575993679",
-      "label": "Wisła",
-      "route": [
-        [
-          2,
-          -1
-        ],
-        [
-          2,
-          0
-        ],
-        [
-          2,
-          1
-        ],
-        [
-          2,
-          2
-        ],
-        [
-          2,
-          3
-        ],
-        [
-          2,
-          4
-        ],
-        [
-          2,
-          5
-        ],
-        [
-          2,
-          5
-        ],
-        [
-          2,
-          5
-        ]
-      ],
-      "width": 20,
-      "color": "#66b5ff"
-    }
-  ],
-  "icons": [
-   
-    
-  ],
+  "rivers": [],
+  "icons": [],
   "labels_size": 20,
   "labels_color": "#000000",
   "background_image": "/static/images/background.png"
